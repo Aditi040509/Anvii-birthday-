@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Little World for Anvi ♡</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&family=Great+Vibes&display=swap');
+:root{--wine:#3b0718;--wine2:#571126;--cream:#f5ead8;--paper:#f8efdf;--ink:#482b2d;--rose:#c98b8c;--gold:#c6a56a}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(ellipse at 50% 20%,#68182e 0%,#420b1d 45%,#290511 100%);color:var(--cream);font-family:'DM Sans',sans-serif;overflow-x:hidden}
+button{font:inherit}
+.opening{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:34px 18px 26px;position:relative;overflow:hidden;text-align:center}
+.opening:before,.opening:after{content:"";position:absolute;width:330px;height:330px;border:1px solid #d8b77a26;border-radius:50%;pointer-events:none}
+.opening:before{top:-190px;left:-160px}.opening:after{bottom:-210px;right:-150px}
+.eyebrow{letter-spacing:.28em;text-transform:uppercase;font-size:.68rem;color:#dfc7a4;margin-bottom:22px}
+.hero-title{font-family:'Great Vibes',cursive;font-size:clamp(3rem,9vw,6rem);font-weight:400;line-height:1.08;margin:0 0 26px;color:#f9e9d2;text-shadow:0 5px 25px #17020b66}
+.hero-stage{width:min(760px,100%);display:grid;grid-template-columns:1fr minmax(220px,330px) 1fr;align-items:center;gap:16px}
+.side-art{font-size:clamp(3rem,7vw,5.5rem);filter:drop-shadow(0 8px 15px #16020a77);line-height:1.4}
+.side-caption{font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:#e8cdb4;letter-spacing:.06em}
+.envelope-wrap{position:relative;cursor:pointer;filter:drop-shadow(0 20px 25px #16020a88);transition:transform .3s}
+.envelope-wrap:hover{transform:translateY(-6px) rotate(-1deg)}
+.envelope{height:190px;position:relative;background:#ead7bd;border-radius:5px;overflow:hidden;border:1px solid #d5b98e}
+.envelope:before{content:"";position:absolute;inset:0;background:linear-gradient(140deg,transparent 49.5%,#c5a17c 50%,transparent 50.7%),linear-gradient(220deg,transparent 49.5%,#d0ad87 50%,transparent 50.7%);opacity:.9}
+.envelope-flap{position:absolute;inset:0 0 auto;height:100px;background:#dfc5a4;clip-path:polygon(0 0,100% 0,50% 100%);z-index:2;filter:drop-shadow(0 3px 2px #76513a55)}
+.envelope-label{position:absolute;z-index:3;left:8px;right:8px;top:68px;color:#5a2430;font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:700;line-height:1.1}
+.seal{position:absolute;z-index:4;left:50%;top:112px;transform:translateX(-50%);width:35px;height:35px;border-radius:50%;background:#76243a;color:#f5dfc4;display:grid;place-items:center;font-family:serif;box-shadow:0 2px 6px #5b162b66}
+.open-hint{font-size:.72rem;letter-spacing:.12em;color:#e3c9ae;margin-top:15px;text-transform:uppercase}
+.next-btn{margin-top:36px;border:1px solid #d9bb91;background:transparent;color:#f6e7d4;padding:13px 25px;border-radius:30px;letter-spacing:.12em;text-transform:uppercase;font-size:.72rem;cursor:pointer;transition:.25s}
+.next-btn:hover{background:#f3e3ce;color:#4a1021}
+.scroll-note{font-size:.7rem;color:#cdaeb0;margin-top:15px;letter-spacing:.12em}
+.page-two{padding:68px 18px 100px;max-width:1100px;margin:auto}
+.section-kicker{text-align:center;color:#d6b28f;letter-spacing:.25em;text-transform:uppercase;font-size:.65rem;margin:0 0 12px}
+.section-heading{text-align:center;font-family:'Great Vibes',cursive;font-size:clamp(2.6rem,6vw,4.2rem);font-weight:400;margin:0 0 40px;color:#f7e8d5}
+.diary{position:relative;max-width:850px;margin:0 auto 70px;padding:17px 18px 17px 38px;background:#d9c5a8;border-radius:8px;box-shadow:0 22px 50px #16020a66;display:grid;grid-template-columns:1fr 1fr;gap:12px;color:var(--ink)}
+.diary:before{content:"";position:absolute;left:18px;top:12px;bottom:12px;width:9px;background:repeating-linear-gradient(to bottom,transparent 0 24px,#8a6a55 24px 28px,transparent 28px 48px)}
+.diary-page{background:var(--paper);min-height:365px;padding:28px 24px;position:relative;box-shadow:inset 0 0 25px #b99c7d20}
+.diary-page:first-of-type{border-radius:3px 0 0 3px}
+.diary-page:last-of-type{border-radius:0 3px 3px 0}
+.photo-placeholder{min-height:275px;border:1px dashed #a77b72;background:linear-gradient(145deg,#e9d9c7,#d7bdb0);display:flex;align-items:center;justify-content:center;text-align:center;color:#79525a;font-family:'Cormorant Garamond',serif;letter-spacing:.12em;font-size:.9rem;position:relative;overflow:hidden}
+.photo-placeholder:before{content:"✦";position:absolute;top:12px;left:14px;color:#a67b69}
+.photo-placeholder small{display:block;font-family:'DM Sans',sans-serif;font-size:.62rem;letter-spacing:.15em;margin-top:8px}
+.photo-caption{font-family:'Great Vibes',cursive;font-size:1.7rem;color:#804052;text-align:center;margin-top:14px}
+.age{font-family:'Cormorant Garamond',serif;font-size:5.5rem;line-height:.9;color:#7c3044;text-align:center;margin:0 0 14px}
+.diary-page h3{font-family:'Cormorant Garamond',serif;font-size:1.65rem;text-align:center;margin:0 0 12px;color:#64263a}
+.diary-page p{font-family:'Cormorant Garamond',serif;font-size:1.13rem;line-height:1.55;text-align:center;margin:0}
+.letter-row{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:center;max-width:900px;margin:0 auto 68px}
+.letter-row.reverse .letter-photo{order:2}
+.letter-photo{padding:12px;background:#eadbc6;box-shadow:0 15px 35px #18030c66;transform:rotate(-2deg)}
+.letter-photo .photo-placeholder{min-height:290px}
+.letter-copy{background:var(--paper);color:var(--ink);padding:30px 30px 34px;box-shadow:0 15px 35px #18030c55;position:relative}
+.letter-copy:before{content:"";position:absolute;inset:9px;border:1px solid #c9aa8b;pointer-events:none}
+.letter-copy h3{font-family:'Great Vibes',cursive;color:#873b50;font-size:2.2rem;font-weight:400;margin:0 0 10px;position:relative}
+.letter-copy p{font-family:'Cormorant Garamond',serif;font-size:1.18rem;line-height:1.58;margin:0;position:relative}
+.film-section{max-width:1000px;margin:0 auto 78px;padding:0 4px}
+.film-title{text-align:center;font-family:'Great Vibes',cursive;font-size:2.8rem;font-weight:400;margin:0 0 24px}
+.film-strip{display:flex;gap:12px;overflow-x:auto;padding:16px 14px 22px;background:#171014;border:8px solid #20151a;box-shadow:0 18px 40px #16020a77;scroll-snap-type:x mandatory}
+.film-frame{flex:0 0 180px;scroll-snap-align:center}
+.film-frame .photo-placeholder{min-height:150px;background:linear-gradient(145deg,#d9c7b5,#b9978d);font-size:.75rem}
+.film-frame .frame-number{text-align:center;font-size:.58rem;color:#d5b98e;letter-spacing:.2em;padding-top:9px}
+.final-section{max-width:950px;margin:0 auto 30px;display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:stretch}
+.final-letter{background:var(--paper);color:var(--ink);padding:35px 34px;box-shadow:0 18px 45px #16020a66;position:relative}
+.final-letter:before{content:"";position:absolute;inset:11px;border:1px solid #c7a487;pointer-events:none}
+.final-letter h2{font-family:'Great Vibes',cursive;color:#81384c;font-size:2.7rem;font-weight:400;margin:0 0 12px;position:relative}
+.final-letter p{font-family:'Cormorant Garamond',serif;font-size:1.16rem;line-height:1.58;margin:0;position:relative}
+.final-photo{background:#eadbc6;padding:13px;box-shadow:0 18px 45px #16020a66;transform:rotate(2deg)}
+.final-photo .photo-placeholder{height:100%;min-height:350px}
+.closing{text-align:center;padding:55px 15px 70px;color:#e5c9ad}
+.closing .script{font-family:'Great Vibes',cursive;font-size:3rem;color:#f5e4d0}
+.closing p{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase}
+.fade-in{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+@media(max-width:680px){
+ .hero-stage{grid-template-columns:1fr 1.6fr 1fr;gap:5px}.side-art{font-size:2.8rem}.side-caption{font-size:.8rem}
+ .envelope{height:155px}.envelope-label{top:59px;font-size:1.3rem}.envelope-flap{height:82px}.seal{top:92px;width:30px;height:30px}
+ .diary{padding:12px 10px 12px 28px;gap:7px}.diary:before{left:12px;width:7px}.diary-page{padding:18px 12px;min-height:310px}
+ .diary-page .photo-placeholder{min-height:235px}.age{font-size:4.4rem}.diary-page h3{font-size:1.35rem}.diary-page p{font-size:1rem}
+ .letter-row{grid-template-columns:1fr;gap:18px;margin-bottom:52px}.letter-row.reverse .letter-photo{order:0}.letter-photo{max-width:82%;margin:auto}.letter-photo .photo-placeholder{min-height:250px}
+ .letter-copy{padding:25px 24px}.letter-copy p{font-size:1.1rem}
+ .final-section{grid-template-columns:1fr;gap:20px}.final-photo{max-width:82%;width:100%;margin:auto}.final-photo .photo-placeholder{min-height:280px}
+ .page-two{padding-top:52px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.fade-in{transition:none}}
+</style>
+</head>
+<body>
+<section class="opening" id="home">
+  <div class="eyebrow">A little something made with love</div>
+  <h1 class="hero-title">For Anvi, with love</h1>
+  <div class="hero-stage">
+    <div><div class="side-art">💐</div><div class="side-caption">A bouquet<br>for you</div></div>
+    <div>
+      <div class="envelope-wrap" onclick="goToDiary()" role="button" tabindex="0" aria-label="Open birthday letter">
+        <div class="envelope"><div class="envelope-flap"></div><div class="envelope-label">Happyyy<br>Birthdayy</div><div class="seal">A</div></div>
+      </div>
+      <div class="open-hint">A little envelope, a lot of love</div>
+    </div>
+    <div><div class="side-art">📷</div><div class="side-caption">Little moments<br>forever</div></div>
+  </div>
+  <button class="next-btn" onclick="goToDiary()">Open your surprise&nbsp; ↓</button>
+  <div class="scroll-note">Made especially for Anvi · 17</div>
+</section>
+
+<main class="page-two" id="diary">
+  <p class="section-kicker">Chapter one · A day just for you</p>
+  <h2 class="section-heading">A little book of you</h2>
+
+  <section class="diary fade-in">
+    <div class="diary-page">
+      <div class="photo-placeholder">PHOTO 1<small>Replace with Anvi's picture</small></div>
+      <div class="photo-caption">a favourite memory ♡</div>
+    </div>
+    <div class="diary-page">
+      <div class="age">17</div>
+      <h3>Happyy birthday babyyy</h3>
+      <p>Another year of being you, and somehow you keep making my life a little better just being in it.</p>
+    </div>
+  </section>
+
+  <section class="letter-row fade-in">
+    <div class="letter-copy">
+      <h3>A little thank you...</h3>
+      <p>i just wanna say thank you for being the most amazing friend i could ever ask for. thank you for listening to my stories, my random rants, and all the little things i overthink. thank you for being there every time i needed someone to talk to, someone who wouldn't judge, someone who simply stays. nothing can really express how lucky and grateful i am to have you in my life. you make the hard days easier and the good days even brighter.</p>
+    </div>
+    <div class="letter-photo"><div class="photo-placeholder">PHOTO 2<small>Replace with Anvi's picture</small></div></div>
+  </section>
+
+  <section class="letter-row reverse fade-in">
+    <div class="letter-copy">
+      <h3>Always here for you ♡</h3>
+      <p>you're the kind of friend people spend years hoping to find, and somehow i got to call you mine. please remember that i'm always here for you too if you ever need a place to rest your thoughts or shoulder to lean on. you're never alone. On your birthday, I hope you realize just how special you are. I hope this new year of your life brings you endless happiness, peace, beautiful memories, and everything your heart wishes for. I hope you achieve all your dreams, even the ones you don't always talk about. i love you, truly.</p>
+    </div>
+    <div class="letter-photo"><div class="photo-placeholder">PHOTO 3<small>Replace with Anvi's picture</small></div></div>
+  </section>
+
+  <section class="film-section fade-in">
+    <h2 class="film-title">Little moments, big memories</h2>
+    <div class="film-strip">
+      <div class="film-frame"><div class="photo-placeholder">PHOTO 4</div><div class="frame-number">✦ 001 ✦</div></div>
+      <div class="film-frame"><div class="photo-placeholder">PHOTO 5</div><div class="frame-number">✦ 002 ✦</div></div>
+      <div class="film-frame"><div class="photo-placeholder">PHOTO 6</div><div class="frame-number">✦ 003 ✦</div></div>
+      <div class="film-frame"><div class="photo-placeholder">PHOTO 7</div><div class="frame-number">✦ 004 ✦</div></div>
+      <div class="film-frame"><div class="photo-placeholder">PHOTO 8</div><div class="frame-number">✦ 005 ✦</div></div>
+    </div>
+  </section>
+
+  <section class="final-section fade-in">
+    <div class="final-letter">
+      <h2>To my favourite person...</h2>
+      <p>If life were a story you would be one of those characters who unexpectedly enter the chapter but end up becoming one of the most important parts of the entire book. You are the kind of person who turns ordinary moments into memories and simple conversations into something that stays in the heart for a long time. Sometimes I think about how strange and beautiful it is that two people who were strangers at one point can slowly become so close that life without them feels incomplete. That's exactly what happened with me, without even realizing it. On your birthday I don't just want to wish you happiness for today. I want to wish you a lifetime full of beautiful moments. I pray that every year brings you closer to your dreams and every new chapter of your life brings more success.</p>
+    </div>
+    <div class="final-photo"><div class="photo-placeholder">PHOTO 9<small>One last favourite picture</small></div></div>
+  </section>
+
+  <footer class="closing">
+    <div class="script">Happy 17th, Anvi ♡</div>
+    <p>you deserve all the lovely things in this world</p>
+  </footer>
+</main>
+<script>
+function goToDiary(){document.getElementById('diary').scrollIntoView({behavior:'smooth'});}
+document.querySelectorAll('.envelope-wrap').forEach(el=>el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();goToDiary();}}));
+const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target);}}),{threshold:.12});
+document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>
